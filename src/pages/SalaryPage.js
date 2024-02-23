@@ -56,16 +56,17 @@ export default function SalaryPage({ overTime }) {
 				<ul>
 					<li className="p-1">
 						<b className="font-medium">Salary:</b> Enter the reserved salary of
-						a person.{' '}
+						a person.
 					</li>
 					<li className="p-1">
 						<b className="font-medium">Days Present:</b> Enter the number of
-						days a person present. Eg. Days per month - 30, 25 Days present
-						excluding sundays.{' '}
+						days a person is present. For example, if the total number of days
+						per month is 30, and the person is present for 25 days (excluding
+						Sundays).
 					</li>
 					<li className="p-1">
 						<b className="font-medium">Working Hours:</b> Enter the number of
-						working hours a person alloted to work.
+						working hours allotted to a person.
 					</li>
 				</ul>
 			</div>

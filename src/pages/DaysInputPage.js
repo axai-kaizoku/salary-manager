@@ -71,25 +71,30 @@ function DaysInputPage({ onSubmit }) {
 					Salary Manager
 				</h1>
 				<div className="w-11/12 my-2 border rounded"></div>
+
 				<b className="text-lg font-medium">Instructions:</b>
+
 				<ul>
 					<li className="p-1">
-						<b className="font-medium">Days:</b> According to the days we should
-						give fill this.{' '}
+						<b className="font-medium">Days:</b> Please fill in according to the
+						days.
 					</li>
 					<li className="p-1">
-						<b className="font-medium">Early (min):</b> How early/late an
-						individual got to shop. Eg. Normal time is 9:00, person got 8:00
-						meaning 60 min early.{' '}
+						<b className="font-medium">Early (min):</b> Indicate how early/late
+						an individual arrived at the shop, similar to a check-in process.
+						For example, if the normal time is 9:00, and the person arrived at
+						8:00, it means 60 minutes early.
 					</li>
 					<li className="p-1">
-						<b className="font-medium">Late (min):</b> How early/late an
-						individual left the shop. Eg. Closing time is 9:00, he/she left at
-						6:00pm, person left 3 hours earlier meaning 3 X 60, 180 minutes
+						<b className="font-medium">Late (min):</b> Indicate how early/late
+						an individual left the shop, similar to a check-out process. For
+						example, if the closing time is 9:00, and the person left at 6:00
+						pm, it means the person left 3 hours earlier, equivalent to 3 x 60,
+						or 180 minutes.
 					</li>
 					<li className="p-1">
-						<b className="font-medium">Note:</b> All of the inputs should be
-						given in Minutes only.{' '}
+						<b className="font-medium">Note:</b> Please provide all inputs in
+						minutes only.
 					</li>
 				</ul>
 			</div>
