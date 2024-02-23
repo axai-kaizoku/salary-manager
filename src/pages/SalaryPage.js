@@ -39,26 +39,51 @@ export default function SalaryPage({ overTime }) {
 	};
 
 	return (
-		<div className="m-4 w-full h-full text-center">
+		<div className="w-full h-full ">
 			<div className="flex flex-row justify-start w-full">
-				<Link to="/">Back</Link>
+				<Link
+					to="/"
+					className="p-1 m-1 ">
+					Back
+				</Link>
 			</div>
-			<h1 className="text-3xl m-4">Salary Page</h1>
-			<div className="flex flex-row justify-around items-center w-full h-full m-8">
-				<table className="border-4 border-red-500 w-2/5 ">
+			<div className="w-full p-4 h-fit">
+				<h1 className="text-4xl font-light md:text-4xl lg:text-5xl sm:text-4xl">
+					Salary Page
+				</h1>
+				<div className="w-11/12 my-2 border rounded"></div>
+				<b className="text-lg font-medium">Instructions:</b>
+				<ul>
+					<li className="p-1">
+						<b className="font-medium">Salary:</b> Enter the reserved salary of
+						a person.{' '}
+					</li>
+					<li className="p-1">
+						<b className="font-medium">Days Present:</b> Enter the number of
+						days a person present. Eg. Days per month - 30, 25 Days present
+						excluding sundays.{' '}
+					</li>
+					<li className="p-1">
+						<b className="font-medium">Working Hours:</b> Enter the number of
+						working hours a person alloted to work.
+					</li>
+				</ul>
+			</div>
+			<div className="flex flex-col items-center justify-around w-full h-full mr-4 ">
+				<table className="m-4 text-center bg-white border-4 border-black sm:w-2/3 lg:w-1/2">
 					<thead>
-						<th>Salary</th>
+						<th className="text-xl">Salary</th>
 						<th>
 							<input
 								type="number"
-								className="w-28"
+								className="w-full sm:w-28"
 								value={reservedSalary}
 								onChange={(e) => setReservedSalary(e.target.value)}
 							/>
 						</th>
 					</thead>
 					<tr>
-						<th>No. of present Days</th>
+						<th className="text-xl">Days Present</th>
 						<td>
 							<input
 								type="number"
@@ -68,7 +93,7 @@ export default function SalaryPage({ overTime }) {
 						</td>
 					</tr>
 					<tr>
-						<th>Working Hours</th>
+						<th className="text-xl">Working Hours</th>
 						<td>
 							<input
 								type="number"
@@ -78,21 +103,32 @@ export default function SalaryPage({ overTime }) {
 						</td>
 					</tr>
 				</table>
-				<div className="border-4 border-green-400 w-1/2">
-					<p className="text-2xl">Extra Hours worked: {totalData.extraHours}</p>
-					<br />
-					<p className="text-2xl">
-						OverTime / Deficit Amount: {totalData.extraSalary}
-					</p>
-					<br />
-					<p className="text-2xl">This month salary: {totalData.totalSalary}</p>
-				</div>
+				<ul className="px-10 my-4 sm:w-2/3 lg:w-1/2 h-fit">
+					<li className="my-3 ">
+						<p className="text-2xl">
+							Extra Hours worked: {totalData.extraHours}
+						</p>
+					</li>
+
+					<li className="my-3">
+						<p className="text-2xl">
+							OverTime / Deficit Amount:{' '}
+							{isNaN(totalData.extraSalary) ? 'Invalid' : totalData.extraSalary}
+						</p>
+					</li>
+					<li className="my-3">
+						<p className="text-2xl">
+							This month salary:{' '}
+							{isNaN(totalData.totalSalary) ? 'Invalid' : totalData.totalSalary}
+						</p>
+					</li>
+				</ul>
+				<button
+					onClick={handleSubmit}
+					className="p-2 m-4 mb-8 bg-white border rounded-sm shadow-lg cursor-pointer">
+					Submit
+				</button>
 			</div>
-			<button
-				onClick={handleSubmit}
-				className="p-2 m-4 border-2 border-black rounded-sm">
-				Submit
-			</button>
 		</div>
 	);
 }

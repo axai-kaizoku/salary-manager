@@ -65,9 +65,36 @@ function DaysInputPage({ onSubmit }) {
 		navigate('/salary');
 	};
 	return (
-		<div className="flex flex-row justify-center items-center w-full h-full">
-			<div>
-				<table className="text-center text-2xl p-4 m-4 border-4 border-black ">
+		<div>
+			<div className="w-full p-4 h-fit">
+				<h1 className="text-4xl font-light md:text-4xl lg:text-5xl sm:text-4xl">
+					Salary Manager
+				</h1>
+				<div className="w-11/12 my-2 border rounded"></div>
+				<b className="text-lg font-medium">Instructions:</b>
+				<ul>
+					<li className="p-1">
+						<b className="font-medium">Days:</b> According to the days we should
+						give fill this.{' '}
+					</li>
+					<li className="p-1">
+						<b className="font-medium">Early (min):</b> How early/late an
+						individual got to shop. Eg. Normal time is 9:00, person got 8:00
+						meaning 60 min early.{' '}
+					</li>
+					<li className="p-1">
+						<b className="font-medium">Late (min):</b> How early/late an
+						individual left the shop. Eg. Closing time is 9:00, he/she left at
+						6:00pm, person left 3 hours earlier meaning 3 X 60, 180 minutes
+					</li>
+					<li className="p-1">
+						<b className="font-medium">Note:</b> All of the inputs should be
+						given in Minutes only.{' '}
+					</li>
+				</ul>
+			</div>
+			<div className="flex flex-col items-center justify-center w-full h-full">
+				<table className="p-4 m-4 text-2xl text-center bg-white border-4 border-black ">
 					<thead className="border-4 border-black">
 						<th>Day</th>
 						<th>Early (min)</th>
@@ -97,11 +124,13 @@ function DaysInputPage({ onSubmit }) {
 						</tr>
 					))}
 				</table>
-				<button
-					onClick={handleSubmit}
-					className="p-2 m-4 border-2 border-black rounded-sm">
-					Submit
-				</button>
+				<div className="text-center">
+					<button
+						onClick={handleSubmit}
+						className="p-2 m-4 mb-8 bg-white border rounded-sm shadow-xl cursor-pointer">
+						Submit
+					</button>
+				</div>
 			</div>
 		</div>
 	);
