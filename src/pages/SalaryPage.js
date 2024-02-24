@@ -25,17 +25,12 @@ export default function SalaryPage({ overTime }) {
 
 		const totalSalary = extraSalary + salary;
 
-		console.log(`Extra Hours worked: ${extraHours}`);
-
-		console.log(`OverTime or Deficit Amount: ${extraSalary}`);
-
-		console.log(`This month salary: ${totalSalary}`);
-
 		setTotalData({
 			extraHours: extraHours.toFixed(3),
 			extraSalary: extraSalary.toFixed(3),
 			totalSalary: totalSalary.toFixed(3),
 		});
+		localStorage.removeItem('daysInputData');
 	};
 
 	return (
@@ -73,36 +68,40 @@ export default function SalaryPage({ overTime }) {
 			<div className="flex flex-col items-center justify-around w-full h-full mr-4 ">
 				<table className="m-4 text-center bg-white border-4 border-black sm:w-2/3 lg:w-1/2">
 					<thead>
-						<th className="text-xl">Salary</th>
-						<th>
-							<input
-								type="number"
-								className="w-full sm:w-28"
-								value={reservedSalary}
-								onChange={(e) => setReservedSalary(e.target.value)}
-							/>
-						</th>
+						<tr>
+							<th className="text-xl">Salary</th>
+							<th>
+								<input
+									type="number"
+									className="w-full sm:w-28"
+									value={reservedSalary}
+									onChange={(e) => setReservedSalary(e.target.value)}
+								/>
+							</th>
+						</tr>
 					</thead>
-					<tr>
-						<th className="text-xl">Days Present</th>
-						<td>
-							<input
-								type="number"
-								value={daysPresent}
-								onChange={(e) => setDaysPresent(e.target.value)}
-							/>
-						</td>
-					</tr>
-					<tr>
-						<th className="text-xl">Working Hours</th>
-						<td>
-							<input
-								type="number"
-								value={workingHours}
-								onChange={(e) => setWorkingHours(e.target.value)}
-							/>
-						</td>
-					</tr>
+					<tbody>
+						<tr>
+							<th className="text-xl">Days Present</th>
+							<td>
+								<input
+									type="number"
+									value={daysPresent}
+									onChange={(e) => setDaysPresent(e.target.value)}
+								/>
+							</td>
+						</tr>
+						<tr>
+							<th className="text-xl">Working Hours</th>
+							<td>
+								<input
+									type="number"
+									value={workingHours}
+									onChange={(e) => setWorkingHours(e.target.value)}
+								/>
+							</td>
+						</tr>
+					</tbody>
 				</table>
 				<ul className="px-10 my-4 sm:w-2/3 lg:w-1/2 h-fit">
 					<li className="my-3 ">

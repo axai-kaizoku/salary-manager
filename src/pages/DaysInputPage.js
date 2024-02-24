@@ -1,9 +1,9 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 function DaysInputPage({ onSubmit }) {
 	const navigate = useNavigate();
-	const [data, setData] = useState([
+	const initialData = [
 		{ id: 1, early: 0, late: 0 },
 		{ id: 2, early: 0, late: 0 },
 		{ id: 3, early: 0, late: 0 },
@@ -39,7 +39,12 @@ function DaysInputPage({ onSubmit }) {
 		{ id: 33, early: 0, late: 0 },
 		{ id: 34, early: 0, late: 0 },
 		{ id: 35, early: 0, late: 0 },
-	]);
+	];
+
+	const [data, setData] = useState(() => {
+		const storedData = localStorage.getItem('daysInputData');
+		return storedData ? JSON.parse(storedData) : initialData;
+	});
 
 	const handleChange = (id, type, value) => {
 		setData((prevData) =>
@@ -49,19 +54,17 @@ function DaysInputPage({ onSubmit }) {
 		);
 	};
 
+	useEffect(() => {
+		localStorage.setItem('daysInputData', JSON.stringify(data));
+	}, [data]);
+
 	const handleSubmit = () => {
 		let earlyMin = 0;
 		let lateMin = 0;
 		data.forEach((day) => (earlyMin += day.early));
 		data.forEach((day) => (lateMin += day.late));
-
 		const overTime = earlyMin - lateMin;
-
-		console.log(earlyMin);
-		console.log(lateMin);
-		console.log(overTime);
 		onSubmit(overTime);
-		console.log(data);
 		navigate('/salary');
 	};
 	return (
@@ -101,33 +104,37 @@ function DaysInputPage({ onSubmit }) {
 			<div className="flex flex-col items-center justify-center w-full h-full">
 				<table className="p-4 m-4 text-2xl text-center bg-white border-4 border-black ">
 					<thead className="border-4 border-black">
-						<th>Day</th>
-						<th>Early (min)</th>
-						<th>Late (min)</th>
-					</thead>
-					{data.map((item) => (
-						<tr key={item.id}>
-							<td>{item.id}</td>
-							<td>
-								<input
-									type="number"
-									value={item.early}
-									onChange={(e) =>
-										handleChange(item.id, 'early', e.target.value)
-									}
-								/>
-							</td>
-							<td>
-								<input
-									type="number"
-									value={item.late}
-									onChange={(e) =>
-										handleChange(item.id, 'late', e.target.value)
-									}
-								/>
-							</td>
+						<tr>
+							<th>Day</th>
+							<th>Early (min)</th>
+							<th>Late (min)</th>
 						</tr>
-					))}
+					</thead>
+					<tbody>
+						{data.map((item) => (
+							<tr key={item.id}>
+								<td>{item.id}</td>
+								<td>
+									<input
+										type="number"
+										value={item.early}
+										onChange={(e) =>
+											handleChange(item.id, 'early', e.target.value)
+										}
+									/>
+								</td>
+								<td>
+									<input
+										type="number"
+										value={item.late}
+										onChange={(e) =>
+											handleChange(item.id, 'late', e.target.value)
+										}
+									/>
+								</td>
+							</tr>
+						))}
+					</tbody>
 				</table>
 				<div className="text-center">
 					<button
